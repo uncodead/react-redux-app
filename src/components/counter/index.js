@@ -1,24 +1,34 @@
-import React, {Component, PropTypes} from 'react'
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {increment, decrement} from '../../actions'
 
 class Counter extends Component {
-  static propTypes = {
-    value: PropTypes.number.isRequired,
-    onIncrement: PropTypes.func.isRequired,
-    onDecrement: PropTypes.func.isRequired
-  }
-
-  render() {
-    const { value, onIncrement, onDecrement } = this.props
-    return (
-      <div>
-        <div>{value}</div>
+    render() {
+      let {counter, onIncrement, onDecrement } = this.props;
+      return (
         <div>
-          <button onClick={onIncrement}>+</button>
-          <button onClick={onDecrement}>-</button>
+          <div>{counter}</div>
+          <div>
+            <button onClick={onIncrement}>+</button>
+            <button onClick={onDecrement}>-</button>
+          </div>
         </div>
-      </div>
-    )
-  }
+      )
+    }
 }
+
+Counter = connect(
+  (state) => {
+    return {
+      counter:state.counter
+    }
+  },
+  (dispatch) => {
+    return {
+      onIncrement: () => {dispatch(increment())},
+      onDecrement: () => {dispatch(decrement())}
+    }
+  }
+)(Counter)
 
 export default Counter;

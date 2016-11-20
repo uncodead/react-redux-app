@@ -6,10 +6,13 @@ const getVisibleTodos = (todos, filter) => {
   switch (filter){
     case 'SHOW_ALL':
       return todos;
+      
     case 'SHOW_TODO':
       return todos.filter((todo) =>  {return !todo.completed});
+
     case 'SHOW_DONE':
       return todos.filter((todo) =>  {return todo.completed});
+      
     default:
       return todos;
   }
