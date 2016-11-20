@@ -1,18 +1,15 @@
 import React, {Component} from 'react'
+import AddTodos from './addTodos'
+import Footer from './footer'
+import VisibleTodoList from '../../containers/visibleTodoList'
 
 class TodoApp extends Component {
   render() {
-    const { onAddTodo, todos } = this.props
     return (
       <div>
-        <button onClick={onAddTodo}>
-          Add todo
-        </button>
-        <ul>
-          {todos.map(todo =>
-            <li key={todo.id}>{todo.text}</li>
-          )}
-        </ul>
+        <AddTodos />
+        <VisibleTodoList/>
+        <Footer/>
       </div>
     )
   }

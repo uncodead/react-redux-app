@@ -6,15 +6,16 @@ export default (state = [], action) => {
             text: action.text,
             complete: false
           };
+
       case 'TOGGLE_TODO':
-        if (state.id!== action.id) {
+        if (state.id !== action.id) {
           return state;
         }
-
         return {
           ...state,
           completed:!state.completed
         };
+
       default:
         return state;
   }

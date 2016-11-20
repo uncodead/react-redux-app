@@ -7,8 +7,10 @@ export default (state = [], action) => {
           ...state,
           todo(undefined, action)
         ];
+
       case 'TOGGLE_TODO':
         return state.map(t => todo(t, action));
+        
       default:
         return state
     }

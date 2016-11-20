@@ -1,42 +1,28 @@
 import React, { Component } from 'react'
 import Counter from './components/counter'
 import TodoApp from './components/todoApp'
-//import logo from './logo.svg';
-//import './App.css';
+import { increment, decrement } from './actions'
 
 class App extends Component {
-
-  constructor(props) {
-    super(props)
-    this.state = { nextTodoIsd : 0}
-  }
-
-  addTodo(store) {
-    this.setState({nextTodoIsd:this.state.nextTodoIsd+1});
-    store.dispatch({ type: 'ADD_TODO', text: 'Test', id: this.state.nextTodoIsd });
-  }
-
   render() {
     const {store} = this.context;
 
     return (
        <div>
         <div>
-          <TodoApp
-            onAddTodo={() => this.addTodo(store)}
-            todos={store.getState().todos}
-          />
-
+          <TodoApp />
+          <br/>
           <Counter
             value={store.getState().counter}
-            onIncrement={() => store.dispatch({ type: 'INCREMENT'})}
-            onDecrement={() => store.dispatch({ type: 'DECREMENT'})}
+            onIncrement={() => store.dispatch(increment())}
+            onDecrement={() => store.dispatch(decrement())}
           />
         </div>
       </div>
     )
   }
 }
+
 App.contextTypes = {
   store: React.PropTypes.object
 }

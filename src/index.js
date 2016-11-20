@@ -19,9 +19,5 @@ const render = () => {
   )
 };
 
-//store.dispatch({type:'ADD_TODO', id:1, text:'Teste'});
-//store.dispatch({type:'SET_VISIBILITY_FILTER', filter:'SHOW_COMPLETED'})
-console.log(store.getState())
-
 store.subscribe(render);
 render();
